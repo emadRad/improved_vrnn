@@ -33,7 +33,7 @@ def init_model(config):
     # Reload checkpoint if needed
     if config['checkpoint'] is not None:
         state_dict = torch.load(config['checkpoint'])
-
+        print("Loading model from checkpoint {}".format(config['checkpoint']))
         aux_state_dict = {}
         for k, v in state_dict.items():
             if k.startswith('module'):

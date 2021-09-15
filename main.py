@@ -53,6 +53,8 @@ def parse_args():
                         help='Reconstruction loss to use')
     parser.add_argument('--checkpoint', default=None, type=str,
                         help='Resume training with this checkpoint path')
+    parser.add_argument('--start_epoch', default=0, type=int,
+                        help='starting epoch')
 
     # Hyperparameters
     parser.add_argument('--n_ctx', required=True, type=int,
@@ -203,7 +205,8 @@ def main(config):
     # Main loop
     abs_batch_idx = 1
     beta2 = config['beta']
-    for epoch_idx in range(config['max_epochs']):
+    log.print('Starting training from epoch {}'.format(config['start_epoch']))
+    for epoch_idx in range(config['start_epoch'], config['max_epochs']):
 
         t1 = time.time()
 
