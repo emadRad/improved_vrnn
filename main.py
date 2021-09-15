@@ -129,7 +129,7 @@ def main(config):
         log_dir = os.path.join(config['out_dir'], 'logs')
         if os.path.exists(log_dir):
             shutil.rmtree(log_dir)
-        log = MyLogger(log_dir)
+        log = MyLogger(log_dir, epoch=config['start_epoch'])
         config_path = os.path.join(config['out_dir'], 'config.json')
         os.makedirs(config['out_dir'], exist_ok=True)
         os.makedirs(os.path.join(config['out_dir'], 'checkpoints'), exist_ok=True)
